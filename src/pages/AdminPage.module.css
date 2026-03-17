@@ -1,3 +1,98 @@
+/* ── 로그인 ── */
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f7;
+  padding: 1rem;
+}
+
+.loginCard {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.loginLogo {
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.loginTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+  font-family: inherit;
+}
+
+.loginSub {
+  font-size: 0.9rem;
+  color: #6e6e73;
+  margin-bottom: 1.8rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.loginInput {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #d2d2d7;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  color: #1d1d1f;
+  background: #fafafa;
+}
+
+.loginInput:focus {
+  border-color: #007aff;
+  background: white;
+}
+
+.loginError {
+  font-size: 0.85rem;
+  color: #ff3b30;
+  text-align: left;
+}
+
+.loginBtn {
+  padding: 0.85rem;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.loginBtn:hover:not(:disabled) {
+  opacity: 0.88;
+  transform: scale(1.01);
+}
+
+.loginBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── 대시보드 ── */
 .page {
   min-height: 100vh;
   background: #f5f5f7;
@@ -5,7 +100,7 @@
 }
 
 .inner {
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -23,6 +118,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .title {
@@ -30,6 +127,12 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #1d1d1f;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .backBtn {
@@ -40,6 +143,21 @@
 }
 
 .backBtn:hover { opacity: 0.75; }
+
+.logoutBtn {
+  font-size: 0.85rem;
+  color: #ff3b30;
+  background: none;
+  border: 1px solid #ff3b30;
+  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.logoutBtn:hover { opacity: 0.7; }
 
 /* Stat Cards */
 .statsGrid {
@@ -58,12 +176,12 @@
 }
 
 .statLabel {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #6e6e73;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.4rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 .statValue {
@@ -75,15 +193,16 @@
 }
 
 .statSub {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: #007aff;
   font-weight: 600;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 /* Tabs */
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.4rem;
   background: rgba(0,0,0,0.05);
   padding: 0.3rem;
@@ -129,14 +248,10 @@
   margin-bottom: 1rem;
 }
 
-.chartWrap {
-  width: 100%;
-}
+.chartWrap { width: 100%; }
 
 /* Table */
-.tableWrap {
-  overflow-x: auto;
-}
+.tableWrap { overflow-x: auto; }
 
 .table {
   width: 100%;
@@ -162,12 +277,10 @@
   vertical-align: middle;
 }
 
-.table tr:hover td {
-  background: #f9f9fb;
-}
+.table tr:hover td { background: #f9f9fb; }
 
 .truncate {
-  max-width: 200px;
+  max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

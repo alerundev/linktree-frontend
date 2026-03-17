@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { trackPageView, trackClick } from './api';
 import LINKS from './links';
+import SOCIAL from './social';
 import styles from './App.module.css';
 
 function App() {
@@ -13,13 +14,17 @@ function App() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
+    <div className={styles.page}>
+      <div className={styles.bg} />
+
+      <div className={styles.inner}>
         {/* Profile */}
         <div className={styles.profile}>
-          <div className={styles.avatar}>👤</div>
+          <div className={styles.avatarWrap}>
+            <div className={styles.avatar}>👤</div>
+          </div>
           <h1 className={styles.name}>Your Name</h1>
-          <p className={styles.bio}>개발자 · 크리에이터 · 서울</p>
+          <p className={styles.bio}>Traveler. Creator. Dreamer.</p>
         </div>
 
         {/* Links */}
@@ -33,17 +38,27 @@ function App() {
               className={styles.linkItem}
               onClick={() => handleClick(link)}
             >
-              <span className={styles.linkEmoji}>{link.emoji}</span>
-              <div className={styles.linkText}>
-                <span className={styles.linkTitle}>{link.title}</span>
-                <span className={styles.linkSubtitle}>{link.subtitle}</span>
-              </div>
-              <span className={styles.linkArrow}>›</span>
+              <span className={styles.linkTitle}>{link.title}</span>
             </a>
           ))}
         </div>
 
-        <p className={styles.footer}>© 2024 Your Name</p>
+        {/* Social icons */}
+        <div className={styles.socials}>
+          {SOCIAL.map((s) => (
+            <a
+              key={s.id}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+              onClick={() => trackClick(s.id, s.label)}
+              aria-label={s.label}
+            >
+              {s.icon}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

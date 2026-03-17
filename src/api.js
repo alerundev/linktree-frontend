@@ -1,5 +1,4 @@
 const BASE = process.env.REACT_APP_API_URL || '';
-const ADMIN_TOKEN = process.env.REACT_APP_ADMIN_TOKEN || '';
 
 export async function trackPageView() {
   try {
@@ -20,25 +19,26 @@ export async function trackClick(linkId, linkTitle) {
   } catch (_) {}
 }
 
-export async function fetchAdminStats() {
+// Admin API - token을 직접 인자로 받음 (sessionStorage에서 관리)
+export async function fetchAdminStats(token) {
   const res = await fetch(`${BASE}/api/admin/stats`, {
-    headers: { 'x-admin-token': ADMIN_TOKEN },
+    headers: { 'x-admin-token': token },
   });
   if (!res.ok) throw new Error('Unauthorized');
   return res.json();
 }
 
-export async function fetchVisitors(limit = 50) {
+export async function fetchVisitors(token, limit = 50) {
   const res = await fetch(`${BASE}/api/admin/visitors?limit=${limit}`, {
-    headers: { 'x-admin-token': ADMIN_TOKEN },
+    headers: { 'x-admin-token': token },
   });
   if (!res.ok) throw new Error('Unauthorized');
   return res.json();
 }
 
-export async function fetchClicks(limit = 50) {
+export async function fetchClicks(token, limit = 50) {
   const res = await fetch(`${BASE}/api/admin/clicks?limit=${limit}`, {
-    headers: { 'x-admin-token': ADMIN_TOKEN },
+    headers: { 'x-admin-token': token },
   });
   if (!res.ok) throw new Error('Unauthorized');
   return res.json();
